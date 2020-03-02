@@ -8,7 +8,7 @@ export default styles = StyleSheet.create({
     backgroundColor: AppStyle.COLOR.Dodger_Blue,
     // backgroundColor: 'red',
 
-    height: AppStyle.responsiveHeight(11),
+    height: AppStyle.responsiveHeight(9),
   },
   App_NAME: {
     marginVertical: AppStyle.responsiveHeight(3),

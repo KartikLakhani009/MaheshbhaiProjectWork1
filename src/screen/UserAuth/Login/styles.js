@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Appstyle from '../../../assets/config/Styles';
 
 const styles = StyleSheet.create({
@@ -8,21 +8,20 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   TitleThirdPArty: {
-    fontSize: Appstyle.fontSizeH1_2,
+    fontSize: Appstyle.fontSizeH2,
     color: Appstyle.COLOR.GREY_DARK,
-    marginVertical: Appstyle.responsiveHeight(3)
+    marginTop: Appstyle.responsiveHeight(2),
   },
   View: {
     flexDirection: 'row',
 
-    marginBottom: Appstyle.responsiveHeight(2),
+    marginBottom: Appstyle.responsiveHeight(1),
     justifyContent: 'center',
-    alignItems: 'center'
-
+    alignItems: 'center',
   },
   input: {
     width: Appstyle.responsiveWidth(80),
-    height: Appstyle.responsiveHeight(9),
+    height: Appstyle.responsiveHeight(8),
     backgroundColor: 'transparent',
   },
   iconStyle: {
@@ -31,18 +30,14 @@ const styles = StyleSheet.create({
     // marginTop: Appstyle.responsiveHeight(0.6)
   },
 
-  forgotStyle2: {
-    marginVertical: Appstyle.responsiveHeight(2)
-  },
-
   forgotStyle: {
     flexDirection: 'row',
-
+    marginVertical: Appstyle.responsiveHeight(3),
     // backgroundColor: 'yellow'
   },
   textColor: {
     color: Appstyle.COLOR.Dodger_Blue,
-    marginLeft: Appstyle.responsiveWidth(2)
+    marginLeft: Appstyle.responsiveWidth(2),
   },
   btnStyle: {
     backgroundColor: Appstyle.COLOR.Dodger_Blue,
@@ -50,9 +45,8 @@ const styles = StyleSheet.create({
     width: Appstyle.responsiveWidth(90),
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: Appstyle.responsiveHeight(5)
-  }
-
-})
+    // marginTop: Appstyle.responsiveHeight(1),
+  },
+});
 
 export default styles;

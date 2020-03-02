@@ -81,8 +81,8 @@ const TabTopNavigation = createMaterialTopTabNavigator(
 
     tabBarOptions: {
       style: {
-        height: AppStyle.responsiveHeight(8),
-        marginTop: AppStyle.responsiveHeight(11),
+        height: AppStyle.responsiveHeight(7),
+        marginTop: AppStyle.responsiveHeight(8),
         backgroundColor: AppStyle.COLOR.Dodger_Blue,
       },
       showIcon: true,

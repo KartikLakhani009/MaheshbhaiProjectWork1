@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
-import { TextInput } from 'react-native-paper';
+import {TextInput} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FBWithGSignin from '../../../Component/ThirdPartySignin/Google+Fb';
-import Appstyle from '../../.././assets/config/Styles'
+import Appstyle from '../../.././assets/config/Styles';
 import Styles from '../../../Component/Drawer/Styles';
 
 class Login extends Component {
@@ -27,18 +27,22 @@ class Login extends Component {
           </View>
           <View style={styles.View}>
             <Icon name="lock" size={22} style={styles.iconStyle} />
-            <TextInput style={styles.input} label="PassWord" />
+            <TextInput style={styles.input} label="Password" />
           </View>
         </View>
-        <View style={styles.forgotStyle2}>
-          <TouchableOpacity style={styles.forgotStyle}>
-            <Icon name="vpn-key" color={Appstyle.COLOR.Dodger_Blue} size={20} style={styles.iconStyle}></Icon>
-            <Text style={styles.textColor}>FORGOT PASSWORD?</Text>
-          </TouchableOpacity>
-        </View>
+
+        <TouchableOpacity style={styles.forgotStyle}>
+          <Icon
+            name="vpn-key"
+            color={Appstyle.COLOR.Dodger_Blue}
+            size={20}
+            style={styles.iconStyle}></Icon>
+          <Text style={styles.textColor}>FORGOT PASSWORD?</Text>
+        </TouchableOpacity>
+
         <View>
           <TouchableOpacity style={styles.btnStyle}>
-            <Text style={{ color: Appstyle.COLOR.WHITE }}>LOGIN</Text>
+            <Text style={{color: Appstyle.COLOR.WHITE}}>LOGIN</Text>
           </TouchableOpacity>
         </View>
       </View>
