@@ -1,9 +1,9 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import AppStyle from '../../assets/config/Styles';
 
 const styles = StyleSheet.create({
   main: {
-    marginVertical: AppStyle.responsiveHeight(5),
+    marginVertical: AppStyle.responsiveHeight(2),
     // backgroundColor: '#f256',
   },
   container: {
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     shadowOpacity: 0.4,
     shadowRadius: 20,
-    shadowOffset: {height: 10, width: 5},
+    shadowOffset: { height: 10, width: 5 },
   },
   Icon: {
     color: AppStyle.COLOR.WHITE_OFF,
