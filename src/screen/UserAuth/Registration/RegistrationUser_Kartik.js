@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import styles from './Styles';
+import styles from './Styles_kartik';
 
-class Registration extends Component {
+class RegistrationKartik extends Component {
   render() {
     return (
       <View style={styles.Container}>
@@ -29,4 +29,4 @@ class Registration extends Component {
     );
   }
 }
-export default Registration;
+export default RegistrationKartik;

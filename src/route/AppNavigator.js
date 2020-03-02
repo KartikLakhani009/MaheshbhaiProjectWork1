@@ -12,10 +12,10 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 import Drawercomponet from '../Component/Drawer/Drawercomponet';
 
 //Screen
-import Registration from '../screen/UserAuth/Registration/RegistrationUser';
+import RegistrationCommon from '../screen/UserAuth/Registration/RegistrationUser_comman';
 
 const DrawerNavigation1 = createStackNavigator({
-  Registration: {screen: Registration},
+  RegistrationCommon: {screen: RegistrationCommon},
 });
 
 const MyDrawerNavigation = createDrawerNavigator(
@@ -32,7 +32,7 @@ const MyDrawerNavigation = createDrawerNavigator(
 
 const AutoStack = createStackNavigator(
   {
-    Registration: {screen: Registration},
+    RegistrationCommon: {screen: RegistrationCommon},
   },
   {
     headerMode: 'none',
