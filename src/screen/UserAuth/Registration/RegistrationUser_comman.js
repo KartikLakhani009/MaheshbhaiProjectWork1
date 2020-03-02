@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './Styles_comman';
 import FBWithGSignin from '../../../Component/ThirdPartySignin/Google+Fb';
 
@@ -12,7 +12,7 @@ class RegistrationCommon extends Component {
           <Text style={styles.App_NAME}>APP NAME</Text>
 
           {/* Tab Bar Logic use here plz add Title here  */}
-          <View style={styles.Reg_Bar}>
+          {/* <View style={styles.Reg_Bar}>
             <TouchableOpacity
               style={styles.Reg_Button}
               onPress={() => {
@@ -27,7 +27,7 @@ class RegistrationCommon extends Component {
               }}>
               <Text style={styles.Reg_Text}>title</Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
 
           {/* Tab Bar End here */}
         </View>
