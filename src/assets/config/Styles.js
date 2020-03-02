@@ -1,5 +1,5 @@
-import {Dimensions, Platform, PixelRatio} from 'react-native';
-const {width, height} = Dimensions.get('window');
+import { Dimensions, Platform, PixelRatio } from 'react-native';
+const { width, height } = Dimensions.get('window');
 const isIphone = Platform.OS === 'ios';
 const deviceType = width < 480 ? 'phone' : 'tablet';
 const iPhoneX = (isIphone && height === 812) || (isIphone && height === 896);
