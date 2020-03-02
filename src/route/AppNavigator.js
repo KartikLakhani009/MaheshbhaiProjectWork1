@@ -6,6 +6,7 @@ import { Image } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
+//Kartik Plan for new
 //Drawer
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
@@ -23,6 +24,7 @@ const DrawerNavigation1 = createStackNavigator({
   RegistrationUser_comman: { screen: RegistrationUser_comman },
 });
 
+//Kartik Plan
 const MyDrawerNavigation = createDrawerNavigator(
   {
     DrawerNavigator: { screen: DrawerNavigation1 },
