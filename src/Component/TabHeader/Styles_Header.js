@@ -5,7 +5,10 @@ import AppStyle from '../../assets/config/Styles';
 export default styles = StyleSheet.create({
   APP_BAR: {
     alignItems: 'center',
-    backgroundColor: AppStyle.COLOR.THEME,
+    backgroundColor: AppStyle.COLOR.Dodger_Blue,
+    // backgroundColor: 'red',
+
+    height: AppStyle.responsiveHeight(11),
   },
   App_NAME: {
     marginVertical: AppStyle.responsiveHeight(3),

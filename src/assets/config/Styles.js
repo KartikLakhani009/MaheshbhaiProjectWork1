@@ -39,6 +39,7 @@ export default {
   greenLinearGradient: ['#25BC77', '#35E593'],
   orangeLinearGradient: ['#FD5739', '#F3914F'],
   COLOR: {
+    Dodger_Blue: '#22a7f0',
     Facebook: '#3b5998',
     Google: '#dd4b39',
     THEME: '#0093BA',

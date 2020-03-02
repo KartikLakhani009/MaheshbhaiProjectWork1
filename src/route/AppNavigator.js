@@ -24,6 +24,9 @@ import RegisterCommon from '../screen/UserAuth/Registration/Register_common';
 import Header from '../Component/TabHeader/Header';
 import CustomHeader from '../Component/CustomHeaderFromNet/CustomHeader';
 
+//Styles
+import AppStyle from '../assets/config/Styles';
+
 const DrawerNavigation1 = createStackNavigator({
   Login: {screen: Login},
 });
@@ -63,27 +66,33 @@ const TabTopNavigation = createMaterialTopTabNavigator(
   {
     initialRouteName: 'Login',
     navigationOptions: {
-      // tabBarLabel: 'Home!',
       header: props => <Header {...props} />,
-      headerStyle: {
-        backgroundColor: 'transparent',
-      },
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        color: '#fff',
-      },
-      headerTintColor: '#fff',
+      // title: 'Hello',
+      // headerStyle: {
+      //   backgroundColor: 'transparent',
+      // },
+      // headerTitleStyle: {
+      //   fontWeight: 'bold',
+      //   color: '#fff',
+      // },
+      // headerTintColor: '#fff',
       animationEnabled: true,
     },
 
     tabBarOptions: {
       style: {
-        height: 50,
-        // marginTop: 200
+        height: AppStyle.responsiveHeight(8),
+        marginTop: AppStyle.responsiveHeight(11),
+        backgroundColor: AppStyle.COLOR.Dodger_Blue,
+      },
+      showIcon: true,
+      tabStyle: {
+        flexDirection: 'row',
       },
       indicatorStyle: {
-        borderBottomColor: 'White',
-        borderWidth: 2,
+        backgroundColor: 'white',
+        // borderBottomColor: 'white',
+        // borderWidth: 2,
       },
     },
   },
@@ -98,17 +107,12 @@ const AutoStack = createStackNavigator(
   },
 );
 
-const AuthStack = createStackNavigator(
-  {
-    // MyDrawerNavigation,
-    TabTopNavigation,
-    AutoStack,
-    // TabTopNavigation
-  },
-  {
-    headerMode: 'none',
-  },
-);
+const AuthStack = createStackNavigator({
+  // MyDrawerNavigation,
+  TabTopNavigation,
+  AutoStack,
+  // TabTopNavigation
+});
 
 const AppNavigator = createAppContainer(AuthStack);
 
