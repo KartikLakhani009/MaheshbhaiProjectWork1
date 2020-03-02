@@ -1,33 +1,37 @@
 /* eslint-disable prettier/prettier */
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import { Image } from 'react-native';
+import {Image} from 'react-native';
 //Stack NAvigation
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
 //Kartik Plan for new
 //Drawer
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import {createDrawerNavigator} from 'react-navigation-drawer';
 
 //Toptabs
-import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 
 // import {reanima} from 'react-native-reanimated';
 import Drawercomponet from '../Component/Drawer/Drawercomponet';
 
 //Screen
-import RegistrationUser_comman from '../screen/UserAuth/Registration/RegistrationUser_comman';
 import Login from '../screen/UserAuth/Login/Login';
+import RegisterCommon from '../screen/UserAuth/Registration/Register_common';
+
+//Tab Bar
+import Header from '../Component/TabHeader/Header';
+import CustomHeader from '../Component/CustomHeaderFromNet/CustomHeader';
 
 const DrawerNavigation1 = createStackNavigator({
-  RegistrationUser_comman: { screen: RegistrationUser_comman },
+  Login: {screen: Login},
 });
 
 //Kartik Plan
 const MyDrawerNavigation = createDrawerNavigator(
   {
-    DrawerNavigator: { screen: DrawerNavigation1 },
+    DrawerNavigator: {screen: DrawerNavigation1},
   },
   {
     drawerWidth: '50%',
@@ -37,45 +41,55 @@ const MyDrawerNavigation = createDrawerNavigator(
   },
 );
 
-const TabTopNavigation = createMaterialTopTabNavigator({
-
-  RegistrationUser_comman: {
-    screen: RegistrationUser_comman,
-    navigationOptions: {
-      title: 'Sign Up',
-      tabBarIcon: () => {
-
-      }
-    }
-  },
-  Login: {
-    screen: Login,
-    navigationOptions: {
-      title: 'Login',
-      tabBarIcon: () => {
-
-      }
-    }
-  },
-}, {
-  initialRouteName: 'RegistrationUser_comman',
-  tabBarOptions: {
-    style: {
-      height: 50,
-      // marginTop: 200
+const TabTopNavigation = createMaterialTopTabNavigator(
+  {
+    Login: {
+      screen: Login,
+      // navigationOptions: {
+      //   title: 'Login',
+      //   tabBarIcon: () => {},
+      // },
     },
-    indicatorStyle: {
-      borderBottomColor: 'White',
-      borderWidth: 2
-    }
+    RegisterCommon: {
+      screen: RegisterCommon,
+      // navigationOptions: {
+      //   title: 'Register',
+      //   tabBarIcon: () => {},
+      // },
+    },
+  },
+  {
+    initialRouteName: 'Login',
+    navigationOptions: {
+      // tabBarLabel: 'Home!',
+      header: props => <Header {...props} />,
+      headerStyle: {
+        backgroundColor: 'transparent',
+      },
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        color: '#fff',
+      },
+      headerTintColor: '#fff',
+      animationEnabled: true,
+    },
 
-  }
-})
+    // tabBarOptions: {
+    //   style: {
+    //     height: 50,
+    //     // marginTop: 200
+    //   },
+    //   indicatorStyle: {
+    //     borderBottomColor: 'White',
+    //     borderWidth: 2,
+    //   },
+    // },
+  },
+);
 
 const AutoStack = createStackNavigator(
   {
-    RegistrationUser_comman: { screen: RegistrationUser_comman },
-    Login: { screen: Login },
+    Login: {screen: Login},
   },
   {
     headerMode: 'none',
@@ -88,7 +102,6 @@ const AuthStack = createStackNavigator(
     TabTopNavigation,
     AutoStack,
     // TabTopNavigation
-
   },
   {
     headerMode: 'none',
