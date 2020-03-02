@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
+//Libary
 import React, {Component} from 'react';
-
-import {Image} from 'react-native';
+import LoginIcon from 'react-native-vector-icons/AntDesign';
 //Stack NAvigation
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
@@ -45,17 +45,19 @@ const TabTopNavigation = createMaterialTopTabNavigator(
   {
     Login: {
       screen: Login,
-      // navigationOptions: {
-      //   title: 'Login',
-      //   tabBarIcon: () => {},
-      // },
+      navigationOptions: {
+        title: 'Login',
+        tabBarIcon: () => {
+          return <LoginIcon name="user" color="#fff" size={20} />;
+        },
+      },
     },
     RegisterCommon: {
       screen: RegisterCommon,
-      // navigationOptions: {
-      //   title: 'Register',
-      //   tabBarIcon: () => {},
-      // },
+      navigationOptions: {
+        title: 'Register',
+        tabBarIcon: () => <LoginIcon name="adduser" color="#fff" size={20} />,
+      },
     },
   },
   {
@@ -74,16 +76,16 @@ const TabTopNavigation = createMaterialTopTabNavigator(
       animationEnabled: true,
     },
 
-    // tabBarOptions: {
-    //   style: {
-    //     height: 50,
-    //     // marginTop: 200
-    //   },
-    //   indicatorStyle: {
-    //     borderBottomColor: 'White',
-    //     borderWidth: 2,
-    //   },
-    // },
+    tabBarOptions: {
+      style: {
+        height: 50,
+        // marginTop: 200
+      },
+      indicatorStyle: {
+        borderBottomColor: 'White',
+        borderWidth: 2,
+      },
+    },
   },
 );
 
