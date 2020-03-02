@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
-    width: Appstyle.responsiveWidth(80),
+    width: Appstyle.width - Appstyle.countPixelRatio(50),
     height: Appstyle.responsiveHeight(8),
     backgroundColor: 'transparent',
   },
