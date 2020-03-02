@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
+//Kartik Plan for new
 //Drawer
 import {createDrawerNavigator} from 'react-navigation-drawer';
 
@@ -18,6 +19,7 @@ const DrawerNavigation1 = createStackNavigator({
   RegistrationCommon: {screen: RegistrationCommon},
 });
 
+//Kartik Plan
 const MyDrawerNavigation = createDrawerNavigator(
   {
     DrawerNavigator: {screen: DrawerNavigation1},
