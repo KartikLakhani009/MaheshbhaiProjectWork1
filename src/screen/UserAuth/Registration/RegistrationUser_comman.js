@@ -6,6 +6,7 @@ import FBWithGSignin from '../../../Component/ThirdPartySignin/Google+Fb';
 class RegistrationCommon extends Component {
   render() {
     return (
+      // new changes on version
       <View style={styles.Container}>
         <View style={styles.APP_BAR}>
           <Text style={styles.App_NAME}>APP NAME</Text>
