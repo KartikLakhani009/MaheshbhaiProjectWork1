@@ -28,7 +28,9 @@ class Login extends Component {
     });
 
     if (!emailError && !passwordError) {
-      // alert('Details are valid!');
+      this.props.navigation.navigate('UserProfile');
+    } else {
+      // alert('Details are  Not valid!');
     }
   };
 
