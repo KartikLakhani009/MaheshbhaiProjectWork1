@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  ScrollView,
+} from 'react-native';
 import styles from './styles';
-import { TextInput } from 'react-native-paper';
+import {TextInput} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FBWithGSignin from '../../../Component/ThirdPartySignin/Google+Fb';
 import Appstyle from '../../.././assets/config/Styles';
@@ -27,105 +33,115 @@ class Login extends ValidationComponent {
 
   CheckAuth = (email, password) => {
     if (email && password) {
-      this.setState({ errormsg: '' });
+      this.setState({errormsg: ''});
       this.validate({
-        email: { email: true },
+        email: {email: true},
       });
       if (this.isFormValid()) {
         return this.props.navigation.navigate('UserProfile');
       }
     } else {
-      this.setState({ errormsg: 'Must be filled value' });
+      this.setState({errormsg: 'Must be filled value'});
     }
   };
 
   render() {
     return (
-      <View style={styles.container}>
-        <View>
-          <Text style={styles.TitleThirdPArty}>Login With</Text>
-        </View>
+      <KeyboardAvoidingView
+        // style={{backgroundColor: 'green', padding: 0}}
+        behavior={'position'}>
+        <ScrollView>
+          <View style={styles.container}>
+            <View>
+              <Text style={styles.TitleThirdPArty}>Login With</Text>
+            </View>
 
-        {/* ThirdParty component */}
+            {/* ThirdParty component */}
 
-        <FBWithGSignin {...this.props} />
-        {/* sign in logic here */}
-        <View style={styles.MainView}>
-          <View style={styles.View}>
-            <Icon name="email" size={22} style={styles.iconStyle} />
-            <TextInput
-              style={styles.input}
-              label="Email"
-              onChangeText={value => this.setState({ email: value.trim() })}
-            />
-          </View>
-          <View style={styles.View}>
-            <Icon name="lock" size={22} style={styles.iconStyle} />
-            <TextInput
-              style={styles.input}
-              label="Password"
-              onChangeText={value => this.setState({ password: value.trim() })}
-              secureTextEntry={true}
-            />
-          </View>
-        </View>
-
-        {this.state.errormsg != '' && (
-          <Text style={styles.ErrorText}>{this.state.errormsg}</Text>
-        )}
-        <Text style={styles.ErrorText}>{this.getErrorMessages()}</Text>
-
-        <TouchableOpacity
-          style={styles.forgotStyle}
-          onPress={() => {
-            this.setState({ visible: true });
-          }}>
-          <Icon
-            name="vpn-key"
-            color={Appstyle.COLOR.Dodger_Blue}
-            size={20}
-            style={styles.iconStyle}></Icon>
-          <Text style={styles.textColor}>FORGOT PASSWORD?</Text>
-        </TouchableOpacity>
-
-        <View>
-          <TouchableOpacity
-            style={styles.btnStyle}
-            onPress={() => {
-              this.CheckAuth(this.state.email, this.state.password);
-            }}>
-            <Text style={{ color: Appstyle.COLOR.WHITE }}>LOGIN</Text>
-          </TouchableOpacity>
-          <Dialog
-            dialogTitle={<DialogTitle title="Forgot Password" />}
-            visible={this.state.visible}
-            footer={
-              <DialogFooter>
-                <DialogButton
-                  text="CANCEL"
-                  onPress={() => {
-                    this.setState({ visible: false });
-                  }}
-                />
-                <DialogButton text="RECOVERY" onPress={() => { }} />
-              </DialogFooter>
-            }
-            onTouchOutside={() => {
-              this.setState({ visible: false });
-            }}>
-            <DialogContent>
+            <FBWithGSignin {...this.props} />
+            {/* sign in logic here */}
+            <View style={styles.MainView}>
               <View style={styles.View}>
                 <Icon name="email" size={22} style={styles.iconStyle} />
                 <TextInput
                   style={styles.input}
                   label="Email"
-                  onChangeText={value => this.setState({ email: value.trim() })}
+                  onChangeText={value => this.setState({email: value.trim()})}
                 />
               </View>
-            </DialogContent>
-          </Dialog>
-        </View>
-      </View>
+              <View style={styles.View}>
+                <Icon name="lock" size={22} style={styles.iconStyle} />
+                <TextInput
+                  style={styles.input}
+                  label="Password"
+                  onChangeText={value =>
+                    this.setState({password: value.trim()})
+                  }
+                  secureTextEntry={true}
+                />
+              </View>
+            </View>
+
+            {this.state.errormsg != '' && (
+              <Text style={styles.ErrorText}>{this.state.errormsg}</Text>
+            )}
+            <Text style={styles.ErrorText}>{this.getErrorMessages()}</Text>
+
+            <TouchableOpacity
+              style={styles.forgotStyle}
+              onPress={() => {
+                this.setState({visible: true});
+              }}>
+              <Icon
+                name="vpn-key"
+                color={Appstyle.COLOR.Dodger_Blue}
+                size={20}
+                style={styles.iconStyle}></Icon>
+              <Text style={styles.textColor}>FORGOT PASSWORD?</Text>
+            </TouchableOpacity>
+
+            <View>
+              <TouchableOpacity
+                style={styles.btnStyle}
+                onPress={() => {
+                  this.CheckAuth(this.state.email, this.state.password);
+                }}>
+                <Text style={{color: Appstyle.COLOR.WHITE}}>LOGIN</Text>
+              </TouchableOpacity>
+              <Dialog
+                dialogTitle={<DialogTitle title="Forgot Password" />}
+                visible={this.state.visible}
+                footer={
+                  <DialogFooter>
+                    <DialogButton
+                      text="CANCEL"
+                      onPress={() => {
+                        this.setState({visible: false});
+                      }}
+                    />
+                    <DialogButton text="RECOVERY" onPress={() => {}} />
+                  </DialogFooter>
+                }
+                onTouchOutside={() => {
+                  this.setState({visible: false});
+                }}>
+                <DialogContent>
+                  <View style={styles.View}>
+                    <Icon name="email" size={22} style={styles.iconStyle} />
+                    <TextInput
+                      style={styles.input}
+                      label="Email"
+                      onChangeText={value =>
+                        this.setState({email: value.trim()})
+                      }
+                    />
+                  </View>
+                </DialogContent>
+              </Dialog>
+            </View>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }

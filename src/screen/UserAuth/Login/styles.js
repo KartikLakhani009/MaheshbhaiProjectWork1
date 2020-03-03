@@ -3,8 +3,9 @@ import Appstyle from '../../../assets/config/Styles';
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
     alignItems: 'center',
+    // backgroundColor: 'red',
     // justifyContent: 'center',
   },
   TitleThirdPArty: {
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   SignUpEmailText: {
     fontSize: Appstyle.fontSizeH2_3,
     color: Appstyle.COLOR.GREY_DARK,
-    marginBottom: Appstyle.responsiveHeight(2),
+    // marginBottom: Appstyle.responsiveHeight(2),
     marginTop: Appstyle.responsiveHeight(2),
   },
   View: {
