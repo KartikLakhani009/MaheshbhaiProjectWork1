@@ -1,24 +1,24 @@
 /* eslint-disable prettier/prettier */
 //Libary
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import LoginIcon from 'react-native-vector-icons/AntDesign';
 //Stack NAvigation
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 //Kartik Plan for new
 //Drawer
-import {createDrawerNavigator} from 'react-navigation-drawer';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
 //Toptabs
-import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 
 // import {reanima} from 'react-native-reanimated';
 import Drawercomponet from '../Component/Drawer/Drawercomponet';
 
 //Screen
 import Login from '../screen/UserAuth/Login/Login';
-import RegisterCommon from '../screen/UserAuth/Registration/Register_common';
+import RegisterCommon from '../screen/UserAuth/Registration/RegisterCommon';
 
 //Tab Bar
 import Header from '../Component/TabHeader/Header';
@@ -28,13 +28,13 @@ import CustomHeader from '../Component/CustomHeaderFromNet/CustomHeader';
 import AppStyle from '../assets/config/Styles';
 
 const DrawerNavigation1 = createStackNavigator({
-  Login: {screen: Login},
+  Login: { screen: Login },
 });
 
 //Kartik Plan
 const MyDrawerNavigation = createDrawerNavigator(
   {
-    DrawerNavigator: {screen: DrawerNavigation1},
+    DrawerNavigator: { screen: DrawerNavigation1 },
   },
   {
     drawerWidth: '50%',
@@ -100,7 +100,8 @@ const TabTopNavigation = createMaterialTopTabNavigator(
 
 const AutoStack = createStackNavigator(
   {
-    Login: {screen: Login},
+    Login: { screen: Login },
+    RegisterCommon: { screen: RegisterCommon },
   },
   {
     headerMode: 'none',

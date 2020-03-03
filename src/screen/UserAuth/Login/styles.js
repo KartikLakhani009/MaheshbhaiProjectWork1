@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import Appstyle from '../../../assets/config/Styles';
 
 const styles = StyleSheet.create({
@@ -11,6 +11,21 @@ const styles = StyleSheet.create({
     fontSize: Appstyle.fontSizeH1_2,
     color: Appstyle.COLOR.GREY_DARK,
     marginTop: Appstyle.responsiveHeight(2),
+  },
+
+  FreeACStyle: {
+    fontSize: Appstyle.fontSizeH2_3,
+    color: Appstyle.COLOR.GREY_DARK,
+    marginTop: Appstyle.responsiveHeight(2),
+
+  },
+
+  SignUpEmailText: {
+    fontSize: Appstyle.fontSizeH2_3,
+    color: Appstyle.COLOR.GREY_DARK,
+    marginBottom: Appstyle.responsiveHeight(2),
+    marginTop: Appstyle.responsiveHeight(2),
+
   },
   View: {
     flexDirection: 'row',
@@ -44,7 +59,7 @@ const styles = StyleSheet.create({
     width: Appstyle.responsiveWidth(90),
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: Appstyle.responsiveHeight(1),
+    marginTop: Appstyle.responsiveHeight(3),
   },
 });
 
