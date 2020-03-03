@@ -48,7 +48,7 @@ class Login extends ValidationComponent {
 
         {/* ThirdParty component */}
 
-        <FBWithGSignin />
+        <FBWithGSignin {...this.props} />
         {/* sign in logic here */}
         <View style={styles.MainView}>
           <View style={styles.View}>
