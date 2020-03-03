@@ -22,16 +22,19 @@ class Login extends Component {
     // const emailError = validation('email', this.state.email);
     // const passwordError = validation('password', this.state.password);
 
+    const emailError = 'sunil'
+    const passwordError = 'sunilgorasiya'
     this.setState({
       emailError: emailError,
       passwordError: passwordError,
     });
 
     if (!emailError && !passwordError) {
-      this.props.navigation.navigate('UserProfile');
+      // this.props.navigation.navigate('UserProfile');
     } else {
       // alert('Details are  Not valid!');
     }
+    this.props.navigation.navigate('UserProfile');
   };
 
   render() {
