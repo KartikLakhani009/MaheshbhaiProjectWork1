@@ -6,35 +6,30 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import FBWithGSignin from '../../../Component/ThirdPartySignin/Google+Fb';
 import Appstyle from '../../.././assets/config/Styles';
 // import validation from '../../../lib/validation/validation';
+import ValidationComponent from 'react-native-form-validator';
 
-class Login extends Component {
+class Login extends ValidationComponent {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      emailError: '',
       password: '',
-      passwordError: '',
+      errormsg: '',
     };
   }
 
-  CheckAuth = () => {
-    // const emailError = validation('email', this.state.email);
-    // const passwordError = validation('password', this.state.password);
-
-    const emailError = 'sunil';
-    const passwordError = 'sunilgorasiya';
-    this.setState({
-      emailError: emailError,
-      passwordError: passwordError,
-    });
-
-    if (!emailError && !passwordError) {
-      // this.props.navigation.navigate('UserProfile');
+  CheckAuth = (email, password) => {
+    if (email && password) {
+      this.setState({errormsg: ''});
+      this.validate({
+        email: {email: true},
+      });
+      if (this.isFormValid()) {
+        return this.props.navigation.navigate('UserProfile');
+      }
     } else {
-      // alert('Details are  Not valid!');
+      this.setState({errormsg: 'Must be filled value'});
     }
-    this.props.navigation.navigate('UserProfile');
   };
 
   render() {
@@ -55,11 +50,6 @@ class Login extends Component {
               style={styles.input}
               label="Email"
               onChangeText={value => this.setState({email: value.trim()})}
-              // onBlur={() => {
-              //   this.setState({
-              //     emailError: validation('email', this.state.email),
-              //   });
-              // }}
             />
           </View>
           <View style={styles.View}>
@@ -68,15 +58,15 @@ class Login extends Component {
               style={styles.input}
               label="Password"
               onChangeText={value => this.setState({password: value.trim()})}
-              // onBlur={() => {
-              //   this.setState({
-              //     passwordError: validation('password', this.state.password),
-              //   });
-              // }}
               secureTextEntry={true}
             />
           </View>
         </View>
+
+        {this.state.errormsg != '' && (
+          <Text style={styles.ErrorText}>{this.state.errormsg}</Text>
+        )}
+        <Text style={styles.ErrorText}>{this.getErrorMessages()}</Text>
 
         <TouchableOpacity style={styles.forgotStyle}>
           <Icon
@@ -91,7 +81,7 @@ class Login extends Component {
           <TouchableOpacity
             style={styles.btnStyle}
             onPress={() => {
-              this.CheckAuth();
+              this.CheckAuth(this.state.email, this.state.password);
             }}>
             <Text style={{color: Appstyle.COLOR.WHITE}}>LOGIN</Text>
           </TouchableOpacity>

@@ -48,6 +48,9 @@ target 'MaheshBhaiReqProject1' do
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+
+
   target 'MaheshBhaiReqProject1Tests' do
     inherit! :search_paths
     # Pods for testing

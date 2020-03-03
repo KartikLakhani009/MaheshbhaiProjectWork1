@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Appstyles from '../../../assets/config/Styles';
 
 const styles = StyleSheet.create({
@@ -16,16 +16,16 @@ const styles = StyleSheet.create({
     height: Appstyles.countPixelRatio(150),
     width: Appstyles.countPixelRatio(150),
     borderRadius: 90,
-    marginTop: Appstyles.responsiveHeight(4.5),
+    marginTop: Appstyles.responsiveHeight(3.5),
     marginBottom: 10,
   },
 
   nameStyle: {
     fontSize: Appstyles.fontSizeH2,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   emailStyle: {
-    fontSize: Appstyles.fontSizeH3_4
+    fontSize: Appstyles.fontSizeH3_4,
   },
   btnStyle: {
     marginTop: 15,
@@ -33,9 +33,8 @@ const styles = StyleSheet.create({
     height: Appstyles.responsiveHeight(5),
     width: Appstyles.responsiveWidth(50),
     justifyContent: 'center',
-    alignItems: 'center'
-  }
-
+    alignItems: 'center',
+  },
 });
 
 export default styles;
