@@ -13,7 +13,9 @@ class FBWithGSignin extends Component {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       console.log('Login Complete', userInfo);
-      return this.props.navigation.navigate('UserProfile');
+      return this.props.navigation.navigate('UserProfile', {
+        userInfo: userInfo.user,
+      });
       // this.setState({userInfo});
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {

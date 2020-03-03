@@ -1,22 +1,30 @@
-import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native'
+import React, {Component} from 'react';
+import {View, Text, Image} from 'react-native';
 import styles from '../UserProfile/styles';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default class UserProfile extends Component {
-    render() {
-        return (
-            <View style={styles.MainContainer}>
-                <View style={styles.ProfileBackground}>
-                    <Image source={{ uri: 'https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg' }} style={styles.ImageStyle}></Image>
-                    <Text style={styles.nameStyle}>{'Name'}</Text>
-                    <Text style={styles.emailStyle}>{'Email'}</Text>
-                    <TouchableOpacity style={styles.btnStyle}>
-                        <Text style={{ color: 'white' }}>LOGOUT</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        )
-    }
+  render() {
+    console.log(this.props);
+    const {userInfo} = this.props.navigation.state.params;
+
+    return (
+      <View style={styles.MainContainer}>
+        <View style={styles.ProfileBackground}>
+          <Image
+            source={{
+              uri: userInfo.photo
+                ? userInfo.photo
+                : 'https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg',
+            }}
+            style={styles.ImageStyle}></Image>
+          <Text style={styles.nameStyle}>{userInfo.name}</Text>
+          <Text style={styles.emailStyle}>{userInfo.email}</Text>
+          <TouchableOpacity style={styles.btnStyle}>
+            <Text style={{color: 'white'}}>LOGOUT</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
 }
