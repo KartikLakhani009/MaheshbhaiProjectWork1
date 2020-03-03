@@ -22,6 +22,22 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
 
+    nameStyle: {
+        fontSize: Appstyles.fontSizeH2,
+        fontWeight: 'bold'
+    },
+    emailStyle: {
+        fontSize: Appstyles.fontSizeH3_4
+    },
+    btnStyle: {
+        marginTop: 15,
+        backgroundColor: 'green',
+        height: Appstyles.responsiveHeight(5),
+        width: Appstyles.responsiveWidth(50),
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+
 })
 
 export default styles;
