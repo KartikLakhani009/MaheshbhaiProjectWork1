@@ -19,8 +19,8 @@ class Login extends Component {
   }
 
   CheckAuth = () => {
-    const emailError = validation('email', this.state.email);
-    const passwordError = validation('password', this.state.password);
+    // const emailError = validation('email', this.state.email);
+    // const passwordError = validation('password', this.state.password);
 
     this.setState({
       emailError: emailError,
@@ -52,11 +52,11 @@ class Login extends Component {
               style={styles.input}
               label="Email"
               onChangeText={value => this.setState({ email: value.trim() })}
-              onBlur={() => {
-                this.setState({
-                  emailError: validation('email', this.state.email),
-                });
-              }}
+            // onBlur={() => {
+            //   this.setState({
+            //     emailError: validation('email', this.state.email),
+            //   });
+            // }}
             />
           </View>
           <View style={styles.View}>
@@ -65,11 +65,11 @@ class Login extends Component {
               style={styles.input}
               label="Password"
               onChangeText={value => this.setState({ password: value.trim() })}
-              onBlur={() => {
-                this.setState({
-                  passwordError: validation('password', this.state.password),
-                });
-              }}
+              // onBlur={() => {
+              //   this.setState({
+              //     passwordError: validation('password', this.state.password),
+              //   });
+              // }}
               secureTextEntry={true}
             />
           </View>
