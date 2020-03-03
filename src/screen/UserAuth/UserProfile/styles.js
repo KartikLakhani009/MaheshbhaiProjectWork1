@@ -1,10 +1,11 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import Appstyles from '../../../assets/config/Styles';
 
 const styles = StyleSheet.create({
   MainContainer: {
-    height: Appstyles.responsiveHeight(30),
-    // backgroundColor: 'yellow'
+    flex: 1,
+    // height: Appstyles.responsiveHeight(50),
+    // backgroundColor: 'yellow',
   },
   ProfileBackground: {
     backgroundColor: 'grey',
@@ -28,13 +29,20 @@ const styles = StyleSheet.create({
     fontSize: Appstyles.fontSizeH3_4,
   },
   btnStyle: {
-    marginTop: 15,
-    backgroundColor: 'green',
-    height: Appstyles.responsiveHeight(5),
-    width: Appstyles.responsiveWidth(50),
+    // marginTop: 15,
+    // backgroundColor: 'green',
+    // height: Appstyles.responsiveHeight(5),
+    // width: Appstyles.responsiveWidth(50),
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  btnMainContainer: {
+    flex: 1,
+    // backgroundColor: 'red',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end'
+  }
 });
 
 export default styles;

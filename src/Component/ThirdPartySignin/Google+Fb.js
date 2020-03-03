@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Platform } from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import GOOGLEICON from 'react-native-vector-icons/AntDesign';
@@ -7,8 +7,10 @@ import AppStyle from '../../assets/config/Styles';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import conf from '../../assets/config/Googleconfig';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
+// import { GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 
 class FBWithGSignin extends Component {
+
   signIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
@@ -31,16 +33,18 @@ class FBWithGSignin extends Component {
     }
   };
 
-  Login = () => {
+  FBLogin = () => {
+    var user = this;
 
     // if(Login)
-    let res = LoginManager.logOut();
+    LoginManager.logOut();
     // LoginManager.getDefaultAudience(user)
-    console.log('Logout res :', res);
+    // console.log('Logout res :', res);
     // .then(res => console.log('Logout  res : ', res));
     Platform.OS = 'android' ? LoginManager.setLoginBehavior('web_only') : null;
+    // LoginManager.setLoginBehavior('web_only');
     // Attempt a login using the Facebook login dialog asking for default permissions.
-    LoginManager.logInWithPermissions(['public_profile', 'email']).then(
+    LoginManager.logInWithPermissions(['public_profile']).then(
       function (result) {
         if (result.isCancelled) {
           console.log('Login cancelled');
@@ -81,8 +85,7 @@ class FBWithGSignin extends Component {
         console.log('Login fail with error: ', error);
       },
     );
-  };
-
+  }
 
   componentDidMount() {
     GoogleSignin.configure(conf);
@@ -95,7 +98,7 @@ class FBWithGSignin extends Component {
           <TouchableOpacity
             style={[styles.btn, styles.facebook_btn]}
             onPress={
-              this.Login
+              this.FBLogin
             }>
             <Icon name="facebook" size={18} style={styles.Icon} />
             <Text style={[styles.Font, styles.fbFont]}>FACEBOOK</Text>

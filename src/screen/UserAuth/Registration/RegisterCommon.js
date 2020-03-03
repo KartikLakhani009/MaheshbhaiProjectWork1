@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from '../Login/styles';
-import {TextInput} from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconUser from 'react-native-vector-icons/FontAwesome';
 import FBWithGSignin from '../../../Component/ThirdPartySignin/Google+Fb';
@@ -60,8 +60,8 @@ class RegisterCommon extends Component {
             {/* </View> */}
 
             <View>
-              <TouchableOpacity style={styles.btnStyle}>
-                <Text style={{color: Appstyle.COLOR.WHITE}}>REGISTER</Text>
+              <TouchableOpacity style={styles.btnStyle} onPress={() => { this.props.navigation.navigate('Login') }}>
+                <Text style={{ color: Appstyle.COLOR.WHITE }}>REGISTER</Text>
               </TouchableOpacity>
             </View>
           </View>
