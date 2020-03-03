@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     height: Appstyles.countPixelRatio(150),
     width: Appstyles.countPixelRatio(150),
     borderRadius: 90,
-    marginTop: Appstyles.responsiveHeight(4.5),
+    marginTop: Appstyles.responsiveHeight(3.5),
     marginBottom: 10,
   },
 

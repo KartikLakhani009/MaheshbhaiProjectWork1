@@ -1,11 +1,13 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import {TextInput} from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FBWithGSignin from '../../../Component/ThirdPartySignin/Google+Fb';
 import Appstyle from '../../.././assets/config/Styles';
+import Dialog, { DialogContent, DialogTitle, DialogFooter, DialogButton } from 'react-native-popup-dialog';
 // import validation from '../../../lib/validation/validation';
+
 
 class Login extends Component {
   constructor(props) {
@@ -15,6 +17,7 @@ class Login extends Component {
       emailError: '',
       password: '',
       passwordError: '',
+      visible: false,
     };
   }
 
@@ -54,12 +57,12 @@ class Login extends Component {
             <TextInput
               style={styles.input}
               label="Email"
-              onChangeText={value => this.setState({email: value.trim()})}
-              // onBlur={() => {
-              //   this.setState({
-              //     emailError: validation('email', this.state.email),
-              //   });
-              // }}
+              onChangeText={value => this.setState({ email: value.trim() })}
+            // onBlur={() => {
+            //   this.setState({
+            //     emailError: validation('email', this.state.email),
+            //   });
+            // }}
             />
           </View>
           <View style={styles.View}>
@@ -67,7 +70,7 @@ class Login extends Component {
             <TextInput
               style={styles.input}
               label="Password"
-              onChangeText={value => this.setState({password: value.trim()})}
+              onChangeText={value => this.setState({ password: value.trim() })}
               // onBlur={() => {
               //   this.setState({
               //     passwordError: validation('password', this.state.password),
@@ -78,7 +81,7 @@ class Login extends Component {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.forgotStyle}>
+        <TouchableOpacity style={styles.forgotStyle} onPress={() => { this.setState({ visible: true }) }}>
           <Icon
             name="vpn-key"
             color={Appstyle.COLOR.Dodger_Blue}
@@ -93,8 +96,25 @@ class Login extends Component {
             onPress={() => {
               this.CheckAuth();
             }}>
-            <Text style={{color: Appstyle.COLOR.WHITE}}>LOGIN</Text>
+            <Text style={{ color: Appstyle.COLOR.WHITE }}>LOGIN</Text>
           </TouchableOpacity>
+          <Dialog
+            dialogTitle={<DialogTitle title="Forgot Password" />}
+            visible={this.state.visible}
+            footer={
+              <DialogFooter>
+                <DialogButton text="CANCEL" onPress={() => { this.setState({ visible: false }) }} />
+                <DialogButton text="SEND" onPress={() => { }} />
+              </DialogFooter>
+            }
+            onTouchOutside={() => {
+              this.setState({ visible: false });
+            }}
+          >
+            <DialogContent>
+
+            </DialogContent>
+          </Dialog>
         </View>
       </View>
     );
