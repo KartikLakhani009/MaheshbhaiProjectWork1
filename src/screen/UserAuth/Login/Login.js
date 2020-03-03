@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import {TextInput} from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FBWithGSignin from '../../../Component/ThirdPartySignin/Google+Fb';
 import Appstyle from '../../.././assets/config/Styles';
-import validation from '../../../lib/validation/validation';
+// import validation from '../../../lib/validation/validation';
 
 class Login extends Component {
   constructor(props) {
@@ -51,7 +51,7 @@ class Login extends Component {
             <TextInput
               style={styles.input}
               label="Email"
-              onChangeText={value => this.setState({email: value.trim()})}
+              onChangeText={value => this.setState({ email: value.trim() })}
               onBlur={() => {
                 this.setState({
                   emailError: validation('email', this.state.email),
@@ -64,7 +64,7 @@ class Login extends Component {
             <TextInput
               style={styles.input}
               label="Password"
-              onChangeText={value => this.setState({password: value.trim()})}
+              onChangeText={value => this.setState({ password: value.trim() })}
               onBlur={() => {
                 this.setState({
                   passwordError: validation('password', this.state.password),
@@ -90,7 +90,7 @@ class Login extends Component {
             onPress={() => {
               this.CheckAuth();
             }}>
-            <Text style={{color: Appstyle.COLOR.WHITE}}>LOGIN</Text>
+            <Text style={{ color: Appstyle.COLOR.WHITE }}>LOGIN</Text>
           </TouchableOpacity>
         </View>
       </View>
