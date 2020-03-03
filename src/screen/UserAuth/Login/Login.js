@@ -7,6 +7,15 @@ import FBWithGSignin from '../../../Component/ThirdPartySignin/Google+Fb';
 import Appstyle from '../../.././assets/config/Styles';
 
 class Login extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  CheckAuth = () => {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -39,7 +48,7 @@ class Login extends Component {
         </TouchableOpacity>
 
         <View>
-          <TouchableOpacity style={styles.btnStyle}>
+          <TouchableOpacity style={styles.btnStyle} onPress={() => { this.CheckAuth() }}>
             <Text style={{ color: Appstyle.COLOR.WHITE }}>LOGIN</Text>
           </TouchableOpacity>
         </View>

@@ -67,15 +67,6 @@ const TabTopNavigation = createMaterialTopTabNavigator(
     initialRouteName: 'Login',
     navigationOptions: {
       header: props => <Header {...props} />,
-      // title: 'Hello',
-      // headerStyle: {
-      //   backgroundColor: 'transparent',
-      // },
-      // headerTitleStyle: {
-      //   fontWeight: 'bold',
-      //   color: '#fff',
-      // },
-      // headerTintColor: '#fff',
       animationEnabled: true,
     },
 
@@ -91,8 +82,6 @@ const TabTopNavigation = createMaterialTopTabNavigator(
       },
       indicatorStyle: {
         backgroundColor: 'white',
-        // borderBottomColor: 'white',
-        // borderWidth: 2,
       },
     },
   },
