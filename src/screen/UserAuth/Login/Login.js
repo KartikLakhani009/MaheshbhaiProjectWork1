@@ -13,7 +13,7 @@ class Login extends Component {
   }
 
   CheckAuth = () => {
-
+    this.props.navigation.navigate('UserProfile')
   }
 
   render() {

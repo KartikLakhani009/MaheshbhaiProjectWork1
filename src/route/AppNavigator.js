@@ -19,6 +19,7 @@ import Drawercomponet from '../Component/Drawer/Drawercomponet';
 //Screen
 import Login from '../screen/UserAuth/Login/Login';
 import RegisterCommon from '../screen/UserAuth/Registration/RegisterCommon';
+import UserProfile from '../screen/UserAuth/UserProfile/UserProfile'
 
 //Tab Bar
 import Header from '../Component/TabHeader/Header';
@@ -91,6 +92,7 @@ const AutoStack = createStackNavigator(
   {
     Login: { screen: Login },
     RegisterCommon: { screen: RegisterCommon },
+    UserProfile: { screen: UserProfile },
   },
   {
     headerMode: 'none',
@@ -102,7 +104,8 @@ const AuthStack = createStackNavigator({
   TabTopNavigation,
   AutoStack,
   // TabTopNavigation
-});
+},
+);
 
 const AppNavigator = createAppContainer(AuthStack);
 
