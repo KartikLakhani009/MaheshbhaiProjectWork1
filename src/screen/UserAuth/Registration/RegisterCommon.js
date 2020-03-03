@@ -29,7 +29,7 @@ class RegisterCommon extends Component {
                 </Text>
               </View>
               {/* ThirdParty component */}
-              <FBWithGSignin />
+              <FBWithGSignin {...this.props} />
               <View>
                 <Text style={styles.SignUpEmailText}>Sign Up using email</Text>
               </View>
