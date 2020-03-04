@@ -5,7 +5,6 @@ import styles from '../UserProfile/styles';
 import { FAB } from 'react-native-paper';
 import { GoogleSignin } from 'react-native-google-signin';
 import Dialog, {
-  DialogContent,
   DialogTitle,
   DialogFooter,
   DialogButton,
@@ -81,6 +80,7 @@ export default class UserProfile extends Component {
                 text="Yes"
                 onPress={() => {
                   GoogleSignin.signOut()
+                  AsyncStorage.clear();
                   this.props.navigation.navigate('Login');
                   this.setState({ visible: false })
                 }}
