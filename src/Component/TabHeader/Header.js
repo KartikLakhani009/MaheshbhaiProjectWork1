@@ -1,21 +1,27 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, AsyncStorage} from 'react-native';
 
 import styles from './Styles_Header';
 
 const Header = props => {
-  return (
-    // new changes on version
-    <View style={styles.Container}>
-      <View style={styles.APP_BAR}>
-        <Text style={styles.App_NAME}>APP NAME</Text>
+  let user = JSON.parse(AsyncStorage.getItem('User'));
 
-        {/* Tab Bar Logic use here plz add Title here  */}
+  if (user != null) {
+    props.navigation.navigate('UserProfile');
+  } else {
+    return (
+      // new changes on version
+      <View style={styles.Container}>
+        <View style={styles.APP_BAR}>
+          <Text style={styles.App_NAME}>APP NAME</Text>
 
-        {/* Tab Bar End here */}
+          {/* Tab Bar Logic use here plz add Title here  */}
+
+          {/* Tab Bar End here */}
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 };
 
 export default Header;

@@ -23,7 +23,6 @@ import UserProfile from '../screen/UserAuth/UserProfile/UserProfile';
 
 //Tab Bar
 import Header from '../Component/TabHeader/Header';
-import CustomHeader from '../Component/CustomHeaderFromNet/CustomHeader';
 
 //Styles
 import AppStyle from '../assets/config/Styles';
@@ -88,20 +87,20 @@ const TabTopNavigation = createMaterialTopTabNavigator(
   },
 );
 
-const AutoStack = createStackNavigator(
-  {
-    Login: {screen: Login},
-    RegisterCommon: {screen: RegisterCommon},
-  },
-  {
-    // headerMode: 'none',
-  },
-);
+// const AutoStack = createStackNavigator(
+//   {
+//     Login: {screen: Login},
+//     RegisterCommon: {screen: RegisterCommon},
+//   },
+//   {
+//     // headerMode: 'none',
+//   },
+// );
 
 const AuthStack = createStackNavigator({
   // MyDrawerNavigation,
   TabTopNavigation,
-  AutoStack,
+  // AutoStack,
   UserProfile: {
     screen: UserProfile,
   },
