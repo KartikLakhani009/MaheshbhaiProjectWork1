@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Image, BackHandler, TextInput } from 'react-native';
-import { } from 'react-navigation';
+import { View, Text, Image, BackHandler } from 'react-native';
 import styles from '../UserProfile/styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import { FAB } from 'react-native-paper';
 import { GoogleSignin } from 'react-native-google-signin';
 import Dialog, {
@@ -13,22 +13,17 @@ import Dialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 
-export default class UserProfile extends Component {
+//component
+import Header from '../../../Component/UserProfileCustomHeader/Header';
 
+export default class UserProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
     };
   }
-  static navigationOptions = ({ navigation }) => {
-    return {
-      //Heading/title of the header
-      title: navigation.getParam('Title', 'Left Right Custom Header'),
-
-      //Heading style
-    };
-  };
+  // };
   Logout = () => {
     // alert('sunil')
     // GoogleSignin.signOut()
@@ -54,14 +49,21 @@ export default class UserProfile extends Component {
 
   ButtonAction = () => {
     this.setState({ visible: true });
-    this.Logout()
-  }
+    this.Logout();
+  };
 
-  // static navigationOptions = {
-  //   title: 'Home',
-  // };
+  static navigationOptions = {
+    title: 'sunil',
+    header: <Header {...this.props} />,
+  };
+  // static navigationOptions = ({navigation}) => {
+  //   return {
+  //     //Heading/title of the header
+  //     // title: navigation.getParam('Title', 'Left Right Custom Header'),
+  //     title: 'hello',
 
-
+  //     //Heading style
+  //   }
 
   // static navigationOptions = ({navigator}) => {
   //   return {
@@ -143,8 +145,7 @@ export default class UserProfile extends Component {
             onPress={this.ButtonAction}
           />
         </View>
-
-      </View >
+      </View>
     );
   }
 }
