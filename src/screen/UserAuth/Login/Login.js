@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
+  AsyncStorage
 } from 'react-native';
 import styles from './styles';
-import {TextInput} from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FBWithGSignin from '../../../Component/ThirdPartySignin/Google+Fb';
 import Appstyle from '../../.././assets/config/Styles';
@@ -33,15 +34,15 @@ class Login extends ValidationComponent {
 
   CheckAuth = (email, password) => {
     if (email && password) {
-      this.setState({errormsg: ''});
+      this.setState({ errormsg: '' });
       this.validate({
-        email: {email: true},
+        email: { email: true },
       });
       if (this.isFormValid()) {
         return this.props.navigation.navigate('UserProfile');
       }
     } else {
-      this.setState({errormsg: 'Must be filled value'});
+      this.setState({ errormsg: 'Must be filled value' });
     }
   };
 
@@ -62,7 +63,7 @@ class Login extends ValidationComponent {
       .then(res => console.log('res : ', res))
       .catch(err => console.log('err : ', err));
     if (user != null) {
-      return props.navigation.navigate('UserProfile', {userInfo: user});
+      return props.navigation.navigate('UserProfile', { userInfo: user });
     }
     return (
       <KeyboardAvoidingView
@@ -84,7 +85,7 @@ class Login extends ValidationComponent {
                 <TextInput
                   style={styles.input}
                   label="Email"
-                  onChangeText={value => this.setState({email: value.trim()})}
+                  onChangeText={value => this.setState({ email: value.trim() })}
                 />
               </View>
               <View style={styles.View}>
@@ -93,7 +94,7 @@ class Login extends ValidationComponent {
                   style={styles.input}
                   label="Password"
                   onChangeText={value =>
-                    this.setState({password: value.trim()})
+                    this.setState({ password: value.trim() })
                   }
                   secureTextEntry={true}
                 />
@@ -108,7 +109,7 @@ class Login extends ValidationComponent {
             <TouchableOpacity
               style={styles.forgotStyle}
               onPress={() => {
-                this.setState({visible: true});
+                this.setState({ visible: true });
               }}>
               <Icon
                 name="vpn-key"
@@ -124,7 +125,7 @@ class Login extends ValidationComponent {
                 onPress={() => {
                   this.CheckAuth(this.state.email, this.state.password);
                 }}>
-                <Text style={{color: Appstyle.COLOR.WHITE}}>LOGIN</Text>
+                <Text style={{ color: Appstyle.COLOR.WHITE }}>LOGIN</Text>
               </TouchableOpacity>
               <Dialog
                 dialogTitle={<DialogTitle title="Forgot Password" />}
@@ -134,14 +135,14 @@ class Login extends ValidationComponent {
                     <DialogButton
                       text="CANCEL"
                       onPress={() => {
-                        this.setState({visible: false});
+                        this.setState({ visible: false });
                       }}
                     />
-                    <DialogButton text="RECOVERY" onPress={() => {}} />
+                    <DialogButton text="RECOVERY" onPress={() => { }} />
                   </DialogFooter>
                 }
                 onTouchOutside={() => {
-                  this.setState({visible: false});
+                  this.setState({ visible: false });
                 }}>
                 <DialogContent>
                   <View style={styles.View}>
@@ -150,7 +151,7 @@ class Login extends ValidationComponent {
                       style={styles.input}
                       label="Email"
                       onChangeText={value =>
-                        this.setState({email: value.trim()})
+                        this.setState({ email: value.trim() })
                       }
                     />
                   </View>
@@ -158,7 +159,7 @@ class Login extends ValidationComponent {
               </Dialog>
             </View>
 
-            <View style={{marginTop: 25}}>
+            <View style={{ marginTop: 25 }}>
               <TouchableOpacity
                 style={{
                   minWidth: 150,
@@ -171,11 +172,11 @@ class Login extends ValidationComponent {
                   shadowColor: '#2AC062',
                   shadowOpacity: 0.4,
                   shadowRadius: 20,
-                  shadowOffset: {height: 10, width: 5},
+                  shadowOffset: { height: 10, width: 5 },
                 }}
                 onPress={this.bypass}>
                 <Text
-                  style={{color: 'white', textAlign: 'center', fontSize: 16}}>
+                  style={{ color: 'white', textAlign: 'center', fontSize: 16 }}>
                   By pass
                 </Text>
               </TouchableOpacity>
