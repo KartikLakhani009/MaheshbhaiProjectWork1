@@ -45,6 +45,16 @@ class Login extends ValidationComponent {
     }
   };
 
+  bypass = () => {
+    return this.props.navigation.navigate('UserProfile', {
+      userInfo: {
+        name: 'Demo',
+        email: 'Demo',
+        photo: '',
+      },
+    });
+  };
+
   render() {
     return (
       <KeyboardAvoidingView
@@ -138,6 +148,29 @@ class Login extends ValidationComponent {
                   </View>
                 </DialogContent>
               </Dialog>
+            </View>
+
+            <View style={{marginTop: 25}}>
+              <TouchableOpacity
+                style={{
+                  minWidth: 150,
+                  height: 50,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: '#2AC062',
+                  display: 'flex',
+                  borderRadius: 5,
+                  shadowColor: '#2AC062',
+                  shadowOpacity: 0.4,
+                  shadowRadius: 20,
+                  shadowOffset: {height: 10, width: 5},
+                }}
+                onPress={this.bypass}>
+                <Text
+                  style={{color: 'white', textAlign: 'center', fontSize: 16}}>
+                  By pass
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </ScrollView>

@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Platform } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, TouchableOpacity, Platform} from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import GOOGLEICON from 'react-native-vector-icons/AntDesign';
 import AppStyle from '../../assets/config/Styles';
-import { GoogleSignin, statusCodes } from 'react-native-google-signin';
+import {GoogleSignin, statusCodes} from 'react-native-google-signin';
 import conf from '../../assets/config/Googleconfig';
-import { LoginManager, AccessToken } from 'react-native-fbsdk';
-// import { GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
+import {LoginManager, AccessToken} from 'react-native-fbsdk';
+import {GraphRequest, GraphRequestManager} from 'react-native-fbsdk';
 
 class FBWithGSignin extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   signIn = async () => {
     try {
+      // GoogleSignin.signOut().then(res => console.log(res));
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       console.log('Login Complete', userInfo);
@@ -34,9 +38,10 @@ class FBWithGSignin extends Component {
   };
 
   FBLogin = () => {
-    var user = this;
+    // var user = this;
+    const {navigate} = this.props.navigation;
+    // console.log('try navigate', navigate);
 
-    // if(Login)
     LoginManager.logOut();
     // LoginManager.getDefaultAudience(user)
     // console.log('Logout res :', res);
@@ -44,30 +49,40 @@ class FBWithGSignin extends Component {
     Platform.OS = 'android' ? LoginManager.setLoginBehavior('web_only') : null;
     // LoginManager.setLoginBehavior('web_only');
     // Attempt a login using the Facebook login dialog asking for default permissions.
-    LoginManager.logInWithPermissions(['public_profile']).then(
-      function (result) {
+    LoginManager.logInWithPermissions(['public_profile', 'email']).then(
+      async function(result) {
         if (result.isCancelled) {
           console.log('Login cancelled');
+          alert('Login cancelled');
         } else {
-          AccessToken.getCurrentAccessToken().then(async data => {
-            console.log(data);
+          await AccessToken.getCurrentAccessToken().then(async data => {
+            // console.log(data);
             const infoRequest = new GraphRequest(
               '/me?fields=name,email,picture.type(large)',
               null,
-              (error, result) => {
+              async (error, result) => {
                 if (error) {
                   console.log('Error fetching data: ', error);
+                  alert('Error', error);
                 } else {
                   alert(JSON.stringify(result));
                   console.log(
                     'Success fetching data: ',
                     JSON.stringify(result),
                   );
+
+                  return navigate('UserProfile', {
+                    userInfo: {
+                      name: result.name,
+                      email: result.email,
+                      photo: result.picture.data.url,
+                    },
+                  });
                 }
               },
             );
 
-            new GraphRequestManager().addRequest(infoRequest).start();
+            await new GraphRequestManager().addRequest(infoRequest).start();
 
             //second way
             // await fetch(
@@ -81,11 +96,12 @@ class FBWithGSignin extends Component {
           });
         }
       },
-      function (error) {
+      function(error) {
         console.log('Login fail with error: ', error);
+        alert('Login fail with error: ', error);
       },
     );
-  }
+  };
 
   componentDidMount() {
     GoogleSignin.configure(conf);
@@ -97,9 +113,7 @@ class FBWithGSignin extends Component {
         <View style={styles.container}>
           <TouchableOpacity
             style={[styles.btn, styles.facebook_btn]}
-            onPress={
-              this.FBLogin
-            }>
+            onPress={this.FBLogin}>
             <Icon name="facebook" size={18} style={styles.Icon} />
             <Text style={[styles.Font, styles.fbFont]}>FACEBOOK</Text>
           </TouchableOpacity>
