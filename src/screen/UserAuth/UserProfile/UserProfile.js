@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { View, Text, Image, BackHandler } from 'react-native';
-import { } from 'react-navigation';
+import React, {Component} from 'react';
+import {View, Text, Image, BackHandler} from 'react-native';
 import styles from '../UserProfile/styles';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { FAB } from 'react-native-paper';
-import { GoogleSignin } from 'react-native-google-signin';
+
+import {FAB} from 'react-native-paper';
+import {GoogleSignin} from 'react-native-google-signin';
 import Dialog, {
   DialogContent,
   DialogTitle,
@@ -13,57 +13,61 @@ import Dialog, {
   DialogButton,
 } from 'react-native-popup-dialog';
 
-export default class UserProfile extends Component {
+//component
+import Header from '../../../Component/UserProfileCustomHeader/Header';
 
+export default class UserProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
     };
   }
-  static navigationOptions = ({ navigation }) => {
-    return {
-      //Heading/title of the header
-      title: navigation.getParam('Title', 'Left Right Custom Header'),
-
-      //Heading style
-    };
-  };
+  // };
   Logout = () => {
-
     // GoogleSignin.signOut()
     // this.props.navigation.navigate('Login')
-    < Dialog
-      dialogTitle={< DialogTitle title="Are You Sure??" />}
-      visible={this.state.visible}
-      footer={
-        < DialogFooter >
-          <DialogButton
-            text="CANCEL"
-            onPress={() => {
-              this.setState({ visible: false });
-            }}
-          />
-          <DialogButton text="Yes" onPress={() => {
-            GoogleSignin.signOut()
-            this.props.navigation.navigate('Login')
-          }} />
-        </DialogFooter>
-      }>
-    </Dialog >
-
-  }
+    return (
+      <Dialog
+        dialogTitle={<DialogTitle title="Are You Sure??" />}
+        visible={this.state.visible}
+        footer={
+          <DialogFooter>
+            <DialogButton
+              text="CANCEL"
+              onPress={() => {
+                this.setState({visible: false});
+              }}
+            />
+            <DialogButton
+              text="Yes"
+              onPress={() => {
+                GoogleSignin.signOut();
+                this.props.navigation.navigate('Login');
+              }}
+            />
+          </DialogFooter>
+        }></Dialog>
+    );
+  };
 
   ButtonAction = () => {
-    this.setState({ visible: true });
-    this.Logout()
-  }
+    this.setState({visible: true});
+    this.Logout();
+  };
 
-  // static navigationOptions = {
-  //   title: 'Home',
-  // };
+  static navigationOptions = {
+    title: 'sunil',
+    header: <Header {...this.props} />,
+  };
+  // static navigationOptions = ({navigation}) => {
+  //   return {
+  //     //Heading/title of the header
+  //     // title: navigation.getParam('Title', 'Left Right Custom Header'),
+  //     title: 'hello',
 
-
+  //     //Heading style
+  //   }
 
   // static navigationOptions = ({navigator}) => {
   //   return {
@@ -95,7 +99,7 @@ export default class UserProfile extends Component {
       'USer Profile > This.props.navigation :',
       this.props.navigation,
     );
-    const { userInfo } = this.props.navigation.state.params;
+    const {userInfo} = this.props.navigation.state.params;
 
     return (
       <View style={styles.MainContainer}>
@@ -126,13 +130,12 @@ export default class UserProfile extends Component {
             color={'white'}
             // loading={true}
             label={'Log out'}
-            theme={{ colors: { accent: 'red' } }}
+            theme={{colors: {accent: 'red'}}}
             // accessibilityLabel={'sunil'}
             onPress={this.ButtonAction}
           />
         </View>
-
-      </View >
+      </View>
     );
   }
 }
