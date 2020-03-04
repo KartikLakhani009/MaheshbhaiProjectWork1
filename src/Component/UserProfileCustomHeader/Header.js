@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, TouchableOpacity, BackHandler} from 'react-native';
 import ExitIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import styles from './Styles_Header';
@@ -8,7 +8,12 @@ const Header = props => {
   return (
     <View style={styles.Container}>
       <View style={styles.iconStyle}>
-        <ExitIcon name="exit-run" color={'black'} size={30} />
+        <ExitIcon
+          name="exit-run"
+          color={'black'}
+          size={30}
+          onPress={() => BackHandler.exitApp()}
+        />
       </View>
       <View style={styles.titleStyle}>
         <Text style={styles.txtStyle}>APP NAME</Text>
@@ -18,5 +23,3 @@ const Header = props => {
 };
 
 export default Header;
-{/* 
- */}
