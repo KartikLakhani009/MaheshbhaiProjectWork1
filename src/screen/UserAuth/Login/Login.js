@@ -62,7 +62,7 @@ class Login extends ValidationComponent {
     AsyncStorage.getItem('User')
       .then(res => {
         console.log('res : ', res)
-        if (user != null) {
+        if (res != null) {
           user = res;
           return this.props.navigation.navigate('UserProfile', { userInfo: user });
         }

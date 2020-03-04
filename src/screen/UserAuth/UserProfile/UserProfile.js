@@ -31,21 +31,25 @@ export default class UserProfile extends Component {
     header: <Header {...this.props} />,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const { userInfo } = this.props.navigation.state.params;
 
     if (this.state.stroe === false) {
-      AsyncStorage.setItem('User', JSON.stringify(userInfo));
+      console.log("Stringyfy : ", JSON.stringify(userInfo));
+      console.log("User : ", userInfo)
+      await AsyncStorage.setItem('User', JSON.stringify(userInfo))
+        .then(res => console.log("stringy res : ", res))
+        .catch(err => console.log("error :", err));
       this.setState({ stroe: true });
     }
   }
 
   render() {
-    console.log('USer Profile > This ', this);
-    console.log(
-      'USer Profile > This.props.navigation :',
-      this.props.navigation,
-    );
+    // console.log('USer Profile > This ', this);
+    // console.log(
+    //   'USer Profile > This.props.navigation :',
+    //   this.props.navigation,
+    // );
     const { userInfo } = this.props.navigation.state.params;
 
     return (
