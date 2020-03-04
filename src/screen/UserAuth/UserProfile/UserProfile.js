@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, Image, BackHandler, AsyncStorage} from 'react-native';
 import styles from '../UserProfile/styles';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import {FAB} from 'react-native-paper';
 import {GoogleSignin} from 'react-native-google-signin';
@@ -60,32 +58,21 @@ export default class UserProfile extends Component {
     );
     const {userInfo} = this.props.navigation.state.params;
 
-    //warning
-    let user;
-    try {
-      user = JSON.parse(AsyncStorage.getItem('USer'));
-
-      if (user == null) {
-        user = userInfo;
-      }
-    } catch (error) {
-      console.log('Error', error);
-      user = userInfo;
-    }
-
     return (
       <View style={styles.MainContainer}>
         <View style={styles.ProfileBackground}>
           <Image
             source={{
-              uri: user.photo
-                ? user.photo
+              uri: userInfo.photo
+                ? userInfo.photo
                 : 'https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg',
             }}
             style={styles.ImageStyle}></Image>
-          <Text style={styles.nameStyle}>{user.name ? user.name : 'Name'}</Text>
+          <Text style={styles.nameStyle}>
+            {userInfo.name ? userInfo.name : 'Name'}
+          </Text>
           <Text style={styles.emailStyle}>
-            {user.email ? user.email : 'email'}
+            {userInfo.email ? userInfo.email : 'email'}
           </Text>
         </View>
         <Dialog

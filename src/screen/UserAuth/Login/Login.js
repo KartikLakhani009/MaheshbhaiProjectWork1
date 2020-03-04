@@ -56,6 +56,14 @@ class Login extends ValidationComponent {
   };
 
   render() {
+    let user;
+
+    AsyncStorage.getItem('User')
+      .then(res => console.log('res : ', res))
+      .catch(err => console.log('err : ', err));
+    if (user != null) {
+      return props.navigation.navigate('UserProfile', {userInfo: user});
+    }
     return (
       <KeyboardAvoidingView
         // style={{backgroundColor: 'green', padding: 0}}
