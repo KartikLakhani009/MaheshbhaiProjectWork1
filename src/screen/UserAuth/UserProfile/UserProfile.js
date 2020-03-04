@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, BackHandler } from 'react-native';
+import { View, Text, Image, BackHandler, TextInput } from 'react-native';
 import { } from 'react-navigation';
 import styles from '../UserProfile/styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -30,27 +30,25 @@ export default class UserProfile extends Component {
     };
   };
   Logout = () => {
-
+    // alert('sunil')
     // GoogleSignin.signOut()
     // this.props.navigation.navigate('Login')
-    < Dialog
-      dialogTitle={< DialogTitle title="Are You Sure??" />}
-      visible={this.state.visible}
-      footer={
-        < DialogFooter >
-          <DialogButton
-            text="CANCEL"
-            onPress={() => {
-              this.setState({ visible: false });
-            }}
-          />
-          <DialogButton text="Yes" onPress={() => {
-            GoogleSignin.signOut()
-            this.props.navigation.navigate('Login')
-          }} />
-        </DialogFooter>
-      }>
-    </Dialog >
+    // <Dialog
+    //   dialogTitle={<DialogTitle title="Are You Sure??" />}
+    //   visible={this.state.visible}
+    //   footer={
+    //     <DialogFooter>
+    //       <DialogButton
+    //         text="CANCEL"
+    //         onPress={() => {
+    //           this.setState({ visible: false });
+    //         }}
+    //       />
+    //       <DialogButton text="Yes" onPress={() => { this.props.navigation.navigate('Login') }} />
+    //     </DialogFooter>
+    //   }>
+    // </Dialog>
+    this.setState({ visible: true });
 
   }
 
@@ -114,9 +112,23 @@ export default class UserProfile extends Component {
             {userInfo.email ? userInfo.email : 'email'}
           </Text>
         </View>
-
+        <Dialog
+          dialogTitle={<DialogTitle title="Are You Sure??" />}
+          visible={this.state.visible}
+          footer={
+            <DialogFooter>
+              <DialogButton
+                text="CANCEL"
+                onPress={() => {
+                  this.setState({ visible: false });
+                }}
+              />
+              <DialogButton text="Yes" onPress={() => { this.props.navigation.navigate('Login') }} />
+            </DialogFooter>
+          }>
+        </Dialog>
         <View style={styles.btnMainContainer}>
-          {/* <TouchableOpacity style={styles.btnStyle}>
+          {/* <TouchableOpacity style={styles.btnStyle} onPress={this.ButtonAction}>
             <Icon name="power-off" size={70} style={styles.iconStyle} />
           </TouchableOpacity> */}
 

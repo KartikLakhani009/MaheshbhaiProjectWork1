@@ -117,7 +117,6 @@ class FBWithGSignin extends Component {
             <Icon name="facebook" size={18} style={styles.Icon} />
             <Text style={[styles.Font, styles.fbFont]}>FACEBOOK</Text>
           </TouchableOpacity>
-
           <TouchableOpacity
             style={[styles.btn, styles.google_btn]}
             onPress={this.signIn}>
