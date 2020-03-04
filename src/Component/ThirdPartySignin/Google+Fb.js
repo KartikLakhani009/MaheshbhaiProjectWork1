@@ -7,7 +7,7 @@ import AppStyle from '../../assets/config/Styles';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import conf from '../../assets/config/Googleconfig';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
-// import { GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
+import { GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 
 class FBWithGSignin extends Component {
 

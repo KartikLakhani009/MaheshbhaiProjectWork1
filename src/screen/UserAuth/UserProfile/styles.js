@@ -41,8 +41,18 @@ const styles = StyleSheet.create({
     flex: 1,
     // backgroundColor: 'red',
     justifyContent: 'flex-end',
-    alignItems: 'flex-end'
-  }
+    alignItems: 'flex-end',
+
+    marginBottom: Appstyles.responsiveHeight(3.5),
+    marginRight: Appstyles.responsiveWidth(6),
+    backgroundColor: 'transparent'
+  },
+  // FAB: {
+  //   shadowOpacity: 0.90,
+  //   shadowOffset: { width: 100, height: 100 },
+  //   shadowColor: "blue",
+  //   shadowRadius: 50
+  // }
 });
 
 export default styles;

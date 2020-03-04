@@ -11,6 +11,8 @@ import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 const theme = {
   ...DefaultTheme,
+  // dark: true,
+  // mode: 'exact',
   colors: {
     ...DefaultTheme.colors,
     primary: '#5333ed',
