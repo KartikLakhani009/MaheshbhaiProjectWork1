@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Platform } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, TouchableOpacity, Platform} from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import GOOGLEICON from 'react-native-vector-icons/AntDesign';
 import AppStyle from '../../assets/config/Styles';
-import { GoogleSignin, statusCodes } from 'react-native-google-signin';
+import {GoogleSignin, statusCodes} from 'react-native-google-signin';
 import conf from '../../assets/config/Googleconfig';
-import { LoginManager, AccessToken } from 'react-native-fbsdk';
-import { GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
+import {LoginManager, AccessToken} from 'react-native-fbsdk';
+import {GraphRequest, GraphRequestManager} from 'react-native-fbsdk';
+import {user} from '../../assets/statics/FormateUSer';
 
 class FBWithGSignin extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class FBWithGSignin extends Component {
 
   FBLogin = () => {
     // var user = this;
-    const { navigate } = this.props.navigation;
+    const {navigate} = this.props.navigation;
     // console.log('try navigate', navigate);
 
     LoginManager.logOut();
@@ -50,7 +51,7 @@ class FBWithGSignin extends Component {
     // LoginManager.setLoginBehavior('web_only');
     // Attempt a login using the Facebook login dialog asking for default permissions.
     LoginManager.logInWithPermissions(['public_profile', 'email']).then(
-      async function (result) {
+      async function(result) {
         if (result.isCancelled) {
           console.log('Login cancelled');
           alert('Login cancelled');
@@ -72,31 +73,21 @@ class FBWithGSignin extends Component {
                   );
 
                   return navigate('UserProfile', {
-                    userInfo: {
-                      name: result.name,
-                      email: result.email,
-                      photo: result.picture.data.url,
-                    },
+                    userInfo: user(
+                      result.name,
+                      result.email,
+                      result.picture.data.url,
+                    ),
                   });
                 }
               },
             );
 
             await new GraphRequestManager().addRequest(infoRequest).start();
-
-            //second way
-            // await fetch(
-            //   'https://graph.facebook.com/v2.5/me?fields=id,first_name,last_name,email,picture.type(large)&access_token=' +
-            //     data.AccessToken,
-            // ).then(res => {
-            //   user = res.json();
-            //   console.log('user : ', user);
-            //   alert('Login Sucessfully');
-            // });
           });
         }
       },
-      function (error) {
+      function(error) {
         console.log('Login fail with error: ', error);
         alert('Login fail with error: ', error);
       },

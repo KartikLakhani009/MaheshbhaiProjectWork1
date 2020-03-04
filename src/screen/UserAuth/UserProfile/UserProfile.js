@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { View, Text, Image, AsyncStorage } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, Image, AsyncStorage} from 'react-native';
 import styles from '../UserProfile/styles';
 
-import { FAB } from 'react-native-paper';
-import { GoogleSignin } from 'react-native-google-signin';
+import {FAB} from 'react-native-paper';
+import {GoogleSignin} from 'react-native-google-signin';
 import Dialog, {
   DialogTitle,
   DialogFooter,
@@ -23,7 +23,7 @@ export default class UserProfile extends Component {
   }
 
   Logout = () => {
-    this.setState({ visible: true });
+    this.setState({visible: true});
   };
 
   static navigationOptions = {
@@ -32,15 +32,15 @@ export default class UserProfile extends Component {
   };
 
   async componentDidMount() {
-    const { userInfo } = this.props.navigation.state.params;
+    const {userInfo} = this.props.navigation.state.params;
 
     if (this.state.stroe === false) {
-      console.log("Stringyfy : ", JSON.stringify(userInfo));
-      console.log("User : ", userInfo)
+      console.log('Stringyfy : ', JSON.stringify(userInfo));
+      console.log('User : ', userInfo);
       await AsyncStorage.setItem('User', JSON.stringify(userInfo))
-        .then(res => console.log("stringy res : ", res))
-        .catch(err => console.log("error :", err));
-      this.setState({ stroe: true });
+        .then(res => console.log('stringy res : ', res))
+        .catch(err => console.log('error :', err));
+      this.setState({stroe: true});
     }
   }
 
@@ -50,7 +50,7 @@ export default class UserProfile extends Component {
       'USer Profile > This.props.navigation :',
       this.props.navigation,
     );
-    const { userInfo } = this.props.navigation.state.params;
+    const {userInfo} = this.props.navigation.state.params;
 
     console.log('USerInfo : ', userInfo);
 
@@ -79,16 +79,17 @@ export default class UserProfile extends Component {
               <DialogButton
                 text="CANCEL"
                 onPress={() => {
-                  this.setState({ visible: false });
+                  this.setState({visible: false});
                 }}
               />
               <DialogButton
                 text="Yes"
                 onPress={() => {
+                  GoogleSignin.revokeAccess();
                   GoogleSignin.signOut();
                   AsyncStorage.clear();
                   this.props.navigation.navigate('Login');
-                  this.setState({ visible: false });
+                  this.setState({visible: false});
                 }}
               />
             </DialogFooter>
@@ -100,7 +101,7 @@ export default class UserProfile extends Component {
             color={'white'}
             // loading={true}
             label={'Log out'}
-            theme={{ colors: { accent: 'red' } }}
+            theme={{colors: {accent: 'red'}}}
             onPress={this.Logout}
           />
         </View>
