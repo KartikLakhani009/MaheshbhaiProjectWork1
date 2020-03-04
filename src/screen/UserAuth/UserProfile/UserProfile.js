@@ -45,12 +45,14 @@ export default class UserProfile extends Component {
   }
 
   render() {
-    // console.log('USer Profile > This ', this);
-    // console.log(
-    //   'USer Profile > This.props.navigation :',
-    //   this.props.navigation,
-    // );
+    console.log('USer Profile > This ', this);
+    console.log(
+      'USer Profile > This.props.navigation :',
+      this.props.navigation,
+    );
     const { userInfo } = this.props.navigation.state.params;
+
+    console.log('USerInfo : ', userInfo);
 
     return (
       <View style={styles.MainContainer}>
@@ -83,16 +85,15 @@ export default class UserProfile extends Component {
               <DialogButton
                 text="Yes"
                 onPress={() => {
-                  GoogleSignin.signOut()
+                  GoogleSignin.signOut();
                   AsyncStorage.clear();
                   this.props.navigation.navigate('Login');
-                  this.setState({ visible: false })
+                  this.setState({ visible: false });
                 }}
               />
             </DialogFooter>
           }></Dialog>
         <View style={styles.btnMainContainer}>
-
           <FAB
             style={styles.FAB}
             icon="power"

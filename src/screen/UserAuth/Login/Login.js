@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
-  AsyncStorage
+  AsyncStorage,
 } from 'react-native';
 import styles from './styles';
 import { TextInput } from 'react-native-paper';
@@ -61,10 +61,13 @@ class Login extends ValidationComponent {
 
     AsyncStorage.getItem('User')
       .then(res => {
-        console.log('res : ', res)
+        console.log('res : ', res);
         if (res != null) {
-          user = res;
-          return this.props.navigation.navigate('UserProfile', { userInfo: user });
+          user = JSON.parse(res);
+          console.log('User  :', user);
+          return this.props.navigation.navigate('UserProfile', {
+            userInfo: user,
+          });
         }
       })
       .catch(err => console.log('err : ', err));
