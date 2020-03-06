@@ -6,6 +6,8 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   AsyncStorage,
+  Modal,
+  Button,
 } from 'react-native';
 import styles from './styles';
 import { TextInput } from 'react-native-paper';
@@ -137,7 +139,21 @@ class Login extends ValidationComponent {
                 }}>
                 <Text style={{ color: Appstyle.COLOR.WHITE }}>LOGIN</Text>
               </TouchableOpacity>
-              <Dialog
+
+              <Modal
+                animationType={"fade"}
+                transparent={true}
+                visible={this.state.visible}
+                onRequestClose={() => { console.log("Modal has been closed.") }}>
+                {/*All views of Modal*/}
+                <View style={styles.modal}>
+                  <Text style={styles.text}>Modal is open!</Text>
+                  <Button title="Click To Close Modal" onPress={() => {
+                    this.setState({ visible: !this.state.visible })
+                  }} />
+                </View>
+              </Modal>
+              {/* <Dialog
                 dialogTitle={<DialogTitle title="Forgot Password" />}
                 visible={this.state.visible}
                 footer={
@@ -166,7 +182,7 @@ class Login extends ValidationComponent {
                     />
                   </View>
                 </DialogContent>
-              </Dialog>
+              </Dialog> */}
             </View>
 
             <View style={{ marginTop: 25 }}>

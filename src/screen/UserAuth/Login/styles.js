@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import Appstyle from '../../../assets/config/Styles';
 
 const styles = StyleSheet.create({
@@ -60,6 +60,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: Appstyle.responsiveHeight(3),
   },
+
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Appstyle.COLOR.Dodger_Blue,
+    height: 300,
+    width: '80%',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    marginTop: '50%',
+    // marginLeft: 40,
+    alignSelf: 'center'
+
+  },
+
   ErrorText: {
     textAlign: 'center',
     color: Appstyle.COLOR.RED_REDICAL,
